@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: radial-gradient(circle, #ede9e9 0%, white 50%, #c6c0b9 100%);
+}
+
+#navber img {
+  width: 200px;
+}
+
+#personal__container {
+  position: relative;
+}
+
+#personal__container .information {
+  font-weight: bold;
+}
+
+#personal__container .information img {
+  position: absolute;
+  top: 150px;
+  left: 50px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+#personal__container .information .name {
+  position: absolute;
+  top: 150px;
+  left: 220px;
+}
+
+#personal__container .information .pop-name {
+  position: absolute;
+  top: 173px;
+  left: 214px;
+}
+
+#personal__container .information .mom-name {
+  position: absolute;
+  top: 198px;
+  left: 214px;
+}
+
+#personal__container .information .dob {
+  position: absolute;
+  top: 223px;
+  left: 260px;
+}
+
+#personal__container .information .nid {
+  position: absolute;
+  top: 252px;
+  left: 220px;
+}
+
+.xyz {
+  position: relative;
+  width: 350px;
+  height: 190px;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  -webkit-box-shadow: 3px 2px 15px 5px rgba(45, 51, 12, 0.11);
+          box-shadow: 3px 2px 15px 5px rgba(45, 51, 12, 0.11);
+}
+
+.xyz img {
+  width: 130px;
+  height: auto;
+}
+
+.xyz .cand__box {
+  position: absolute;
+  top: 50px;
+  left: 188px;
+}
+
+.xyz .cand__box img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}

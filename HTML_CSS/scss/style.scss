@@ -1,0 +1,86 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: radial-gradient(circle, rgba(237,233,233,1) 0%, rgba(255,255,255,1) 50%, rgba(198,192,185,1) 100%);
+    
+}
+// homo page
+#navber{
+    img{
+        width: 200px;
+    }
+}
+// dash board
+#personal__container{
+    position: relative;
+    .information{
+        font-weight: bold;
+        img{
+            position: absolute;
+            top: 150px;
+            left: 50px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+        }
+        .name{
+            position: absolute;
+            top: 150px;
+            left: 220px;
+        }
+        .pop-name{
+            position: absolute;
+            top: 173px;
+            left: 214px;
+        }
+        .mom-name{
+            position: absolute;
+            top: 198px;
+            left: 214px;
+        }
+        .dob{
+            position: absolute;
+            top: 223px;
+            left: 260px;
+        }
+        .nid{
+            position: absolute;
+            top: 252px;
+            left: 220px;
+        }
+    }
+}
+// nation election
+.xyz{
+    position: relative;
+    width: 350px;
+    height: 190px;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    box-shadow: 3px 2px 15px 5px rgba(45, 51, 12, 0.11);
+    img{
+        width: 130px;
+        height: auto;
+    }
+    .cand__box{
+        position: absolute;
+        top: 50px;
+        left: 188px;
+        img{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+    }
+}
+// city corporation
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+ }
