@@ -1,0 +1,57 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block national %}
+    {% if uData.elec_Worker %}
+        <div class="row"> 
+            <h1>National Election 2021</h1>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">Candianent Name</th>
+                    <th scope="col">Party</th>
+                    <th scope="col">Area</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>DHA-14</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-success m-2">Active Poll</button>
+                <button type="button" class="btn btn-danger m-2">Cancle Poll</button>
+            </div>
+        </div>
+    {% else %}
+            <div class="row">
+                <h1>National Election 2021</h1>
+                <small>Chose your currect candent</small>
+                <br>
+                <div class="col-3 p-3 xyz">
+                    <h6>Bangladesh Auami Luge</h6>
+                    <img src="http://www.bssnews.net/wp-content/uploads/2018/11/boat.jpg" alt="Nouka">
+                    <br>
+                    <a class="btn btn-success btn-sm" href="home.html">Vote</a>
+                    <div class="cand__box">
+                        <img src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_624206636_200013332000928034_376810.jpg" alt="">
+                        <p>Shack Hasina</p>
+                    </div>
+                </div>
+                <div class="col-3 xyz">
+                    
+                </div>
+                <div class="col-3 xyz">
+                    
+                </div>
+                <div class="col-3 xyz">
+                    
+                </div>
+            </div>
+
+    {% endif %}
+        
+{% endblock national %}

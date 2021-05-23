@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from user import views as user_views
 from home import views as home_views
+from election import views as elec_views
 from vote import views as vote_views
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,9 +30,11 @@ urlpatterns = [
     path('edit-info/',user_views.edit_info,name='edit-info'),
     path('register/',user_views.register,name='register'),
     path('result/',vote_views.result,name='result'),#need to add election name to url path
+    path('elections/<str:elecName>',elec_views.election,name='elections'),
+    path('election-worker/',elec_views.electionWorker,name='election-worker'),
     path('vote/',vote_views.vote,name='vote'),
     path('',auth_views.LoginView.as_view(template_name='home/home.html'),name='login'),
-    path('logout/',auth_views.LogoutView.as_view(template_name='user/logout.html'),name='logout'),
+    path('logout/',auth_views.LogoutView.as_view(template_name='home/logout.html'),name='logout'),
     path('password-change/',
          auth_views.PasswordChangeView.as_view(template_name='user/password_change.html'),
          name='password_change'),
@@ -49,3 +54,6 @@ urlpatterns = [
          auth_views.PasswordResetCompleteView.as_view(template_name='user/password_reset_complete.html'),
          name='password_reset_complete'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root =settings.MEDIA_ROOT)

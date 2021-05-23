@@ -1,0 +1,17 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+
+{% block logoutContent %}
+    <div class="row">
+            <div class="col">
+                <h1>Wecome To Online Voting System</h1>
+                <img src=" {% static 'images/enc-logo.png' %} " alt="">
+            </div>
+            <div class="col p-lg-2 m-auto" style="width: 50px">
+                <h1>Logout Successfully</h1>
+                <a href="{% url 'login' %}">Log In</a> here.
+                
+            </div>
+        </div>
+{% endblock logoutContent %}

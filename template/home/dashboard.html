@@ -1,0 +1,43 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+
+{% block dashboardLogout %}
+    <a class="btn btn-danger" href="{% url 'logout' %}">Logout</a>
+{% endblock dashboardLogout %}
+{% block dashboard %}
+    <div class="row">
+            <div id="personal__container" class="col"> 
+                <h5>Personal Information</h5>
+                <img src="{% static 'images/nid.jpg' %}" alt="">
+                <div class="information">
+                    <img src="{{"/media/"}}{{ userInfo.picture }}" alt="USER IMAGE">
+                    <p class="name">{{ userInfo.name }}</p>
+                    <p class="pop-name">{{ userInfo.father_name }}</p>
+                    <p class="mom-name">{{ userInfo.mother_name }}</p>
+                    <p class="dob text-danger">{{ userInfo.dob }}</p>
+                    <p class="nid text-danger">{{ userInfo.nid }}</p>
+                </div>
+                <br>
+                <a class="btn btn-success" href="{% url 'edit-info' %}">Edit</a>
+            </div>
+            <div class="col">
+                <h5>Running Election</h5>
+                <ul>
+                    {% for i in electionList %} <li><a href="{{"/elections/"}}{{i.elec_name}}">{{i.elec_name}}</a></li>  {% endfor %}
+                </ul>
+            </div>
+            <div class="col">
+                <h5>Election Arricive</h5>
+                <ul>
+                    <li>DNCC</li>
+                    <li>DNCC</li>
+                    <li>DNCC</li>
+                    <li>DNCC</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row w-50 m-auto ">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/k1PC2oHcUKo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+{% endblock dashboard %}

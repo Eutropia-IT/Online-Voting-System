@@ -11,22 +11,21 @@
                 {% load crispy_forms_tags %}
                 <form action="" method="POST" class="form-group" style="width: 500px; margin: 20px; box-shadow: 3px 2px 15px 5px rgba(45, 51, 12, 0.11);">
                     {% csrf_token %}
-                     <fieldset class="form-group m-3" style="align: center">
-                     <br>
-                {{ form|crispy }}
-            </fieldset>
+                    <fieldset class="form-group m-3" style="align: center">
+                        <br>
+                        {{ form|crispy }}
+                    </fieldset>
                      
-                     <button type="submit" class="submit form-group btn btn-outline-info m-3"> Register </button>
-                     <div class="pb-4 pt-4 m-3">
-                    <a href="{% url 'password_reset' %}">Forgot your password?</a>
-                </div>
-
-                <div class="border-top pt-4 m-3">
-                    Already have an account? <a href="{% url 'login' %}">Sign In</a> here.
-                </div>
-                <br>
+                    <button type="submit" class="submit form-group btn btn-outline-info m-3"> Register </button>
+                    <div class="pb-4 pt-4 m-3">
+                        <a href="{% url 'password_reset' %}">Forgot your password?</a>
+                    </div>
+                    <div class="border-top pt-4 m-3">
+                        Already have an account? <a href="{% url 'login' %}">Sign In</a> here.
+                    </div>
+                    <br>
                 </form>
                 
             </div>
-        </div>
+    </div>
 {% endblock registerform %}

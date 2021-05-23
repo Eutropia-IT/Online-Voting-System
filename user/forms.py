@@ -24,7 +24,7 @@ class EditInfoForm(forms.ModelForm):
     name = forms.CharField()
     father_name = forms.CharField()
     mother_name = forms.CharField()
-    profile_picture = forms.ImageField()
+    profile_picture = forms.FileField()
     dob = forms.DateField()
     class Meta:
         model = DummyCitizenInfo

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class DummyCitizenInfo(models.Model):
-    picture = models.ImageField(upload_to='profile_pictures', default='default.jpg')
+    picture = models.FileField(upload_to='profile_pictures', default='default.jpg')
     name = models.CharField(max_length=30, db_column='Name')
     father_name = models.CharField(max_length=30, db_column='Father Name')
     mother_name = models.CharField(max_length=30, db_column='Mother Name')
@@ -14,13 +14,14 @@ class DummyCitizenInfo(models.Model):
     area_name = models.CharField(max_length=10, db_column='Area Name')
     ward_number = models.CharField(max_length=10, db_column='Ward Number')
     dob = models.DateField()
+    elec_Worker = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name+ '-' + self.nid
 
 class CandidateInfo(models.Model):
-    candidate = models.OneToOneField(User, on_delete=models.CASCADE)
-    candidate_info = models.OneToOneField(DummyCitizenInfo, on_delete=models.CASCADE) 
+    nid =  models.CharField(max_length=40, default=' ')
+    elec_name = models.CharField(max_length=41, default='')  
     mp = 'MP'
     mayor = 'MAYOR'
     councillor = 'COUNCILLOR'

@@ -1,0 +1,57 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}ECN Administration{% endblock title %}
+{% load crispy_forms_tags %}
+
+
+{% block dashboardLogout %}
+    <a class="btn btn-danger" href="{% url 'logout' %}">Logout</a>
+{% endblock dashboardLogout %}
+{% block ecn_worker_dashboard %}
+     <div class="row">
+            <div id="personal__container" class="col"> 
+                <h5>Personal Information</h5>
+                <img src="{% static 'images/nid.jpg' %}" alt="">
+                <div class="information">
+                    <img src="{{"/media/"}}{{ userInfo.picture }}" alt="USER IMAGE">
+                    <p class="name">{{ userInfo.name }}</p>
+                    <p class="pop-name">{{ userInfo.father_name }}</p>
+                    <p class="mom-name">{{ userInfo.mother_name }}</p>
+                    <p class="dob text-danger">{{ userInfo.dob }}</p>
+                    <p class="nid text-danger">{{ userInfo.nid }}</p>
+                </div>
+                <br>
+                <button type="button" class="btn btn-success">Election Adminstration</button>
+            </div>
+            <div class="col">
+                <h5 class= "text-warning">Pnding Election</h5>
+                <ul>
+                    {% for i in electionList %} <li><a href="{{"/elections/"}}{{i.elec_name}}">{{i.elec_name}}</a></li>  {% endfor %}
+                </ul>
+            </div>
+            <div class="col">
+                <h5>Election Arricive</h5>
+                <ul>
+                    <li>DNCC</li>
+                    <li>DNCC</li>
+                    <li>DNCC</li>
+                    <li>DNCC</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="w-25">
+        <br>
+            <p>Create An Election<p>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    {{ clec_createForm|crispy }}
+                </fieldset>
+                <button class="submit form-group btn btn-outline-info">
+                    Submit
+                </button>
+            </form>
+        </div>
+{% endblock ecn_worker_dashboard %}

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'home',
     'crispy_forms',
     'pandas',
+    'election',
 ]
 
 MIDDLEWARE = [
@@ -125,9 +126,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-LOGIN_REDIRECT_URL = 'dashboard'
 
 LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'dashboard'
+
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'

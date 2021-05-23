@@ -41,7 +41,7 @@ class Migration(migrations.Migration):
                 ('voting_area', models.CharField(db_column='Area Name', default='', max_length=10)),
                 ('voting_ward', models.CharField(db_column='Ward Number', default='', max_length=10)),
                 ('candidate', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('candidate_info', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='user.dummycitizeninfo')),
+                
             ],
         ),
     ]
