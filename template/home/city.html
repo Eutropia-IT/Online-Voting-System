@@ -2,86 +2,121 @@
 {% load static %}
 
 {% block city %}
-            <form action="" >
+    <h1>{{elec_name}} [{{votearea.ward_number}}]</h1>
+    {% if uData.elec_Worker %}
+        <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">Candianent Name</th>
+                    <th scope="col">Candidate Type</th>
+                    <th scope="col">Ward</th>
+                    <th scope="col">Vote Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a,b,c,d in canlist3 %}
+                        <tr>
+                            <td>{{ a }}</td>
+                            <td>{{ b }}</td>
+                            <td>{{ c }}</td>
+
+                            <td>{{ d }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <form method="POST">
+            {% csrf_token %}
+                <div class="input-group mb-3">
+                    <select name="actionOp" class="form-select" id="inputGroupSelect02" required>
+                        <option >Choose...</option>
+                        {% if electionTable.elec_status == 'pending' %}
+                            <option value="active">Active</option>
+                            <option value="cancle">Cancle</option>
+                        {% elif electionTable.elec_status == 'active'%}
+                            <option value="ended">Ended</option>
+                        {% endif %}
+                    </select>
+                    <label class="input-group-text" for="inputGroupSelect02">
+                        <button type="submit" class="btn btn-success">Actoin</button>
+                    </label>
+                </div>
+            </form>
+    {% else %}
+        {% if voteFlag %}
+            <h1 class="text-danger"> You have already voted once. Multiple votes may lead you to jail. </h1>
+            <a href="{% url 'dashboard' %}" class="link-success">Return to Dashboard</a>
+            {% else %}
+                        <form action="" method="POST">
+            {% csrf_token %}
             <div class="row">
-                <h1>DNCC Election 2021</h1>
                 <small>Chose your currect candent</small>
                 <br>
                 
                 <!-- Mayor -->
                 <div class="col-4 p-3 mayor">
                     <h5>Mayor</h5>
-                    <div class="col p-3 xyz">
-                        <h6>Bangladesh Auami Luge</h6>
-                        <img src="http://www.bssnews.net/wp-content/uploads/2018/11/boat.jpg" alt="Nouka">
-                        <br> <br>
-                        <input class="form-check-input mt-0" type="radio" value="asd" required>
-                        <div class="cand__box">
-                            <img src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_624206636_200013332000928034_376810.jpg" alt="">
-                            <p>Shack Hasina</p>
-                        </div>
+                    {% for w, x, y, z, wx in canlist %}
+                        {% if y == "MAYOR" %}
+                            <div class="col p-3 xyz">
+                                <h6>Mayor Candidate</h6>
+                                {% comment %} <h6>{{ z }}</h6> {% endcomment %}
+                                <img src="http://www.bssnews.net/wp-content/uploads/2018/11/boat.jpg" alt="Nouka">
+                                <br> <br>
+                                <input type="radio" class="form-check-input mt-0" name='MAYOR' value={{wx}} required>
+                                <div class="cand__box">
+                                <img src="{{'/media/'}}{{ x }}" alt="">
+                                <p>{{ w }}</p>
+                            </div>
                     </div>
-                    <div class="col p-3 xyz">
-                        <h6>Bangladesh Auami Luge</h6>
-                        <img src="http://www.bssnews.net/wp-content/uploads/2018/11/boat.jpg" alt="Nouka">
-                        <br> <br>
-                        <input class="form-check-input mt-0" type="radio" value="asd" required>
-                        <div class="cand__box">
-                            <img src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_624206636_200013332000928034_376810.jpg" alt="">
-                            <p>Shack Hasina</p>
-                        </div>
-                    </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
                 <!-- Coucilor -->
                 <div class="col-4 p-3 coucilor">
                     <h5>Coucilor</h5>
-                    <div class="col p-3 xyz">
-                        <h6>Bangladesh Auami Luge</h6>
-                        <img src="http://www.bssnews.net/wp-content/uploads/2018/11/boat.jpg" alt="Nouka">
-                        <br> <br>
-                        <input class="form-check-input mt-0" type="radio" value="asd" required>
-                        <div class="cand__box">
-                            <img src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_624206636_200013332000928034_376810.jpg" alt="">
-                            <p>Shack Hasina</p>
-                        </div>
+                    {% for a, b, c, d, ab in canlist1 %}
+                        {% if c == "COUNCILLOR" %}
+                            <div class="col p-3 xyz">
+                                <h6>Councillor Candidate</h6>
+                                {% comment %} <h6>{{ z }}</h6> {% endcomment %}
+                                <img src="http://www.bssnews.net/wp-content/uploads/2018/11/boat.jpg" alt="Nouka">
+                                <br> <br>
+                                <input class="form-check-input mt-0" type="radio" name='COUNCILLOR' value={{ab}} required>
+                                <div class="cand__box">
+                                <img src="{{'/media/'}}{{ b }}" alt="">
+                                <p>{{ a }}</p>
+                            </div>
                     </div>
-                    <div class="col p-3 xyz">
-                        <h6>Bangladesh Auami Luge</h6>
-                        <img src="http://www.bssnews.net/wp-content/uploads/2018/11/boat.jpg" alt="Nouka">
-                        <br> <br>
-                        <input class="form-check-input mt-0" type="radio" value="asd" required>
-                        <div class="cand__box">
-                            <img src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_624206636_200013332000928034_376810.jpg" alt="">
-                            <p>Shack Hasina</p>
-                        </div>
-                    </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
                 <!-- Reserved women's seats -->
                 <div class="col-4 p-3 rWoman">
                     <h5>Reserved women's seats</h5>
-                    <div class="col p-3 xyz">
-                        <h6>Bangladesh Auami Luge</h6>
-                        <img src="http://www.bssnews.net/wp-content/uploads/2018/11/boat.jpg" alt="Nouka">
-                        <br> <br>
-                        <input class="form-check-input mt-0" type="radio" value="asd" required>
-                        <div class="cand__box">
-                            <img src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_624206636_200013332000928034_376810.jpg" alt="">
-                            <p>Shack Hasina</p>
-                        </div>
+                    {% for e, f, g, h, ef in canlist2 %}
+                    
+                        {% if g == "RESERVED" %}
+                        
+                            <div class="col p-3 xyz">
+                                <h6>Reserved Woman's Seat</h6>
+                                {% comment %} <h6>{{ z }}</h6> {% endcomment %}
+                                <img src="http://www.bssnews.net/wp-content/uploads/2018/11/boat.jpg" alt="Nouka">
+                                <br> <br>
+                                <input class="form-check-input mt-0" type="radio" name='RESERVED' value={{ef}} required>
+                                <div class="cand__box">
+                                <img src="{{'/media/'}}{{ f }}" alt="">
+                                <p>{{ e }}</p>
+                            </div>
                     </div>
-                    <div class="col p-3 xyz">
-                        <h6>Bangladesh Auami Luge</h6>
-                        <img src="http://www.bssnews.net/wp-content/uploads/2018/11/boat.jpg" alt="Nouka">
-                        <br> <br>
-                        <input class="form-check-input mt-0" type="radio" value="asd" required>
-                        <div class="cand__box">
-                            <img src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_624206636_200013332000928034_376810.jpg" alt="">
-                            <p>Shack Hasina</p>
-                        </div>
-                    </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
                 <button type="submit" class="btn btn-success">Submit</button>
                 
             </div>
         </form>
+        {% endif %}
+    {% endif %}
+            
 {% endblock city %}

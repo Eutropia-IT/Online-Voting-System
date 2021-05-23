@@ -24,16 +24,13 @@
             <div class="col">
                 <h5>Running Election</h5>
                 <ul>
-                    {% for i in electionList %} <li><a href="{{"/elections/"}}{{i.elec_name}}">{{i.elec_name}}</a></li>  {% endfor %}
+                    {% for i in aElectionList %} <li><a href="{{"/elections/"}}{{i.elec_name}}">{{i.elec_name}}</a></li>  {% endfor %}
                 </ul>
             </div>
             <div class="col">
                 <h5>Election Arricive</h5>
                 <ul>
-                    <li>DNCC</li>
-                    <li>DNCC</li>
-                    <li>DNCC</li>
-                    <li>DNCC</li>
+                    {% for i in endElectionList %} <li><a href="{{"/elections/"}}{{i.elec_name}}">{{i.elec_name}}</a></li>  {% endfor %}
                 </ul>
             </div>
         </div>

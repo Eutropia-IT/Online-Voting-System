@@ -9,14 +9,15 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from election.models import Election
-from .models import DummyCitizenInfo
+from .models import CanInfo, DummyCitizenInfo
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 # Create your views here.
 @login_required
 def dashboard(request):
     context = {
-        "electionList" : Election.objects.all(),
+        "aElectionList" : Election.objects.filter(elec_status = 'active'),
+        "endElectionList" : Election.objects.filter(elec_status = 'ended'),
         "userInfo" : DummyCitizenInfo.objects.get(email=request.user.email)
     }
     if context['userInfo'].elec_Worker == True:

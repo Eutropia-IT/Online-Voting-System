@@ -2,54 +2,90 @@
 {% load static %}
 
 {% block national %}
+    <h1>{{elec_name}} [{{votearea.area_name}}]</h1>
     {% if uData.elec_Worker %}
         <div class="row"> 
-            <h1>National Election 2021</h1>
+            <h1>{{elec_name}}</h1>
             <table class="table table-hover">
                 <thead>
                     <tr>
                     <th scope="col">Candianent Name</th>
                     <th scope="col">Party</th>
                     <th scope="col">Area</th>
+                    <th scope="col">Vote Count</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>DHA-14</td>
-                    </tr>
+                    {% for a,b,c,d in nationalcanlist %}
+                        <tr>
+                            <td>{{ a }}</td>
+                            <td>{{ b }}</td>
+                            <td>{{ c }}</td>
+
+                            <td>{{ d }}</td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-success m-2">Active Poll</button>
-                <button type="button" class="btn btn-danger m-2">Cancle Poll</button>
-            </div>
+            <form method="POST">
+            {% csrf_token %}
+                <div class="input-group mb-3">
+                    <select name="actionOp" class="form-select" id="inputGroupSelect02" required>
+                        <option >Choose...</option>
+                        {% if electionTable.elec_status == 'pending' %}
+                            <option value="active">Active</option>
+                            <option value="cancle">Cancle</option>
+                        {% elif electionTable.elec_status == 'active'%}
+                            <option value="ended">Ended</option>
+                        {% endif %}
+                    </select>
+                    <label class="input-group-text" for="inputGroupSelect02">
+                        <button type="submit" class="btn btn-success">Action</button>
+                    </label>
+                </div>
+            </form>
         </div>
     {% else %}
             <div class="row">
-                <h1>National Election 2021</h1>
+                {% if voteFlag %}
+            <h1 class="text-danger"> You have already voted once. Multiple votes may lead you to jail. </h1>
+            <img class="w-50 m-auto" src="https://media.istockphoto.com/photos/sad-prisoner-in-jail-picture-id153702112" alt="Nouka">
+            <a href="{% url 'dashboard' %}" class="link-success">Return to Dashboard</a>
+            {% else %}
+                        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="row">
                 <small>Chose your currect candent</small>
                 <br>
-                <div class="col-3 p-3 xyz">
-                    <h6>Bangladesh Auami Luge</h6>
-                    <img src="http://www.bssnews.net/wp-content/uploads/2018/11/boat.jpg" alt="Nouka">
-                    <br>
-                    <a class="btn btn-success btn-sm" href="home.html">Vote</a>
-                    <div class="cand__box">
-                        <img src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_624206636_200013332000928034_376810.jpg" alt="">
-                        <p>Shack Hasina</p>
+                
+                <!-- MP -->
+                <div class="col-4 p-3 mayor">
+                    <h5>Member of Parliament</h5>
+                    {% for w, x, y, z, wx in canlist %}
+                        
+                            <div class="col p-3 xyz">
+                                <h6>{{ z }}</h6>
+                                {% comment %} <h6>{{ z }}</h6> {% endcomment %}
+                                <img src="http://www.bssnews.net/wp-content/uploads/2018/11/boat.jpg" alt="Nouka">
+                                <br> <br>
+                                <input type="radio" class="form-check-input mt-0" name='MP' value={{wx}} required>
+                                <div class="cand__box">
+                                <img src="{{'/media/'}}{{ x }}" alt="">
+                                <p>{{ w }}</p>
+                            </div>
                     </div>
+                        
+                    {% endfor %}
                 </div>
-                <div class="col-3 xyz">
-                    
+                
+                     
+                   
                 </div>
-                <div class="col-3 xyz">
-                    
-                </div>
-                <div class="col-3 xyz">
-                    
-                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+                
+            </div>
+        </form>
+        {% endif %}
             </div>
 
     {% endif %}

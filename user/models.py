@@ -19,18 +19,19 @@ class DummyCitizenInfo(models.Model):
     def __str__(self):
         return self.name+ '-' + self.nid
 
-class CandidateInfo(models.Model):
-    nid =  models.CharField(max_length=40, default=' ')
+class CanInfo(models.Model):
+    name =  models.CharField(max_length=40, default='')
+    nid = models.CharField(max_length=40, default='')
     elec_name = models.CharField(max_length=41, default='')  
     mp = 'MP'
     mayor = 'MAYOR'
     councillor = 'COUNCILLOR'
-    resereved_lady = 'RESREVED'
+    resereved_lady = 'RESERVED'
     options1 = [
         (mp, 'MP'),
         (mayor, 'MAYOR'),
         (councillor, 'COUNCILLOR'),
-        (resereved_lady, 'RESREVED')
+        (resereved_lady, 'RESERVED')
     ]
     candidate_type = models.TextField(choices=options1)
     al = 'AL'
@@ -50,4 +51,5 @@ class CandidateInfo(models.Model):
     voting_ward = models.CharField(default='' , max_length=10 ,db_column='Ward Number')
 
     def __str__(self):
-        return self.candidate_info.name + '-' + self.voting_area + '-' + self.voting_ward
+        return self.name+ '-' + self.voting_area + '-' + self.voting_ward
+

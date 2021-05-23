@@ -13,6 +13,7 @@ class Election(models.Model):
     
     active = 'active'
     panding = 'pending'
+    cancel = 'cancle'
     ended = 'ended'
-    opt2 = [ ( active, 'active') , (panding , 'pending'), (ended ,'ended')]
+    opt2 = [ ( active, 'active') , (panding , 'pending'), (cancel ,'cancle'), (ended ,'ended')]
     elec_status = TextField(choices=opt2, default='pending')
