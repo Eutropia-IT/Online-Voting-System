@@ -30,7 +30,7 @@
             <div class="col">
                 <h5>Election Arricive</h5>
                 <ul>
-                    {% for i in endElectionList %} <li><a href="{{"/elections/"}}{{i.elec_name}}">{{i.elec_name}}</a></li>  {% endfor %}
+                    {% for i in endElectionList %} <li><a href="{% url 'arcives' %}">{{i.elec_name}}</a></li>  {% endfor %}
                 </ul>
             </div>
         </div>

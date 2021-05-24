@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block national %}
-    <h1>{{elec_name}} [{{votearea.area_name}}]</h1>
+    
     {% if uData.elec_Worker %}
         <div class="row"> 
             <h1>{{elec_name}}</h1>
@@ -16,12 +16,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for a,b,c,d in nationalcanlist %}
+                    {% for a,b,c,d in admincanlistnational %}
                         <tr>
                             <td>{{ a }}</td>
                             <td>{{ b }}</td>
                             <td>{{ c }}</td>
-
                             <td>{{ d }}</td>
                         </tr>
                     {% endfor %}
@@ -47,6 +46,7 @@
         </div>
     {% else %}
             <div class="row">
+                <h1>{{elec_name}} [{{votearea.area_name}}]</h1>
                 {% if voteFlag %}
             <h1 class="text-danger"> You have already voted once. Multiple votes may lead you to jail. </h1>
             <img class="w-50 m-auto" src="https://media.istockphoto.com/photos/sad-prisoner-in-jail-picture-id153702112" alt="Nouka">

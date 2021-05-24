@@ -11,7 +11,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from election.models import Election
 from .models import CanInfo, DummyCitizenInfo
 from django.conf import settings
-from django.core.files.storage import FileSystemStorage
+
 # Create your views here.
 @login_required
 def dashboard(request):
@@ -46,8 +46,7 @@ def edit_info(request):
                 context['userInfo'].dob = request.POST.get('dob')
                 context['userInfo'].save()
             return redirect('dashboard')
-        # else:
-        #     return render(request,'home/editProfile.html', context)
+        
     return render(request, 'home/editProfile.html', context)
 
 def register(request):
@@ -57,12 +56,16 @@ def register(request):
             user_nid = request.POST.get('nid')
             try:
                 var_nid = DummyCitizenInfo.objects.get(nid = user_nid)
-                # messages.success(request, 'We just need to verify your email address before you can access. Verify your email address')
+                
                 if var_nid:
                     form.save()
+                    new_user = authenticate(username=form.cleaned_data['username'],
+                                    password=form.cleaned_data['password1'],
+                                    )
+                    login(request, new_user)
                     return redirect('dashboard')
             except ObjectDoesNotExist:
-                # messages.error(request, 'It seems that this NID or Email is already associated with another account', )
+                
                 return redirect('login')
                 
     else:

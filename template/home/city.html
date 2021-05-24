@@ -2,8 +2,9 @@
 {% load static %}
 
 {% block city %}
-    <h1>{{elec_name}} [{{votearea.ward_number}}]</h1>
+    
     {% if uData.elec_Worker %}
+    <h1>{{elec_name}}</h1>
         <table class="table table-hover">
                 <thead>
                     <tr>
@@ -14,7 +15,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for a,b,c,d in canlist3 %}
+                    {% for a,b,c,d in admincanlistcity %}
                         <tr>
                             <td>{{ a }}</td>
                             <td>{{ b }}</td>
@@ -43,6 +44,7 @@
                 </div>
             </form>
     {% else %}
+    <h1>{{elec_name}} [{{votearea.ward_number}}]</h1>
         {% if voteFlag %}
             <h1 class="text-danger"> You have already voted once. Multiple votes may lead you to jail. </h1>
             <a href="{% url 'dashboard' %}" class="link-success">Return to Dashboard</a>

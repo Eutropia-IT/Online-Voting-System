@@ -14,14 +14,14 @@ from django.db.models import Q
 def election(request, elecName):
     votearea = DummyCitizenInfo.objects.get(email = request.user.email)
     electionobj = Election.objects.get(elec_name=elecName)
-    
+    admincandidates = CanInfo.objects.filter(elec_name = elecName)
     if(electionobj.elec_type=='national'):
         candidates=CanInfo.objects.filter(elec_name = elecName, voting_area = votearea.area_name)
     else:
         # mayorcandidates=CanInfo.objects.filter(elec_name = elecName, candidate_type = 'MAYOR') 
         candidates=CanInfo.objects.filter(Q(elec_name = elecName) & Q(voting_ward = votearea.ward_number)|Q(voting_ward = 'M'))
-        print(candidates)
-        print(len(candidates))
+    print(admincandidates)
+        
     canlistname = []
     canlistphoto = []
     candiparty = []
@@ -30,15 +30,25 @@ def election(request, elecName):
     counter = []
     canlistward =[]
     canlistarea = []
-    # mayorcanlistphoto = []
-    # mayorcanlistnid = []
-    # mayorcounter = []
-    # for j in range(len(mayorcandidates)):
-    #     dummyvar=DummyCitizenInfo.objects.get(nid = mayorcandidates[j].nid)
-    #     mayorcanlistname.append(dummyvar.name)
-    #     mayorcanlistphoto.append(dummyvar.picture)
-    #     mayorcanlistnid.append(candidates[j].nid)
-    #     mayorcounter.append(Vote.objects.filter(elec_name=elecName,candidate=mayorcandidates[j]).count())
+    
+    admincanlistname = []
+    admincanlistphoto = []
+    admincandiparty = []
+    admincanlisttype = []
+    admincanlistnid = []
+    admincounter = []
+    admincanlistward =[]
+    admincanlistarea = []
+    for j in range(len(admincandidates)):
+        dummyvar=DummyCitizenInfo.objects.get(nid = admincandidates[j].nid)
+        admincanlistname.append(dummyvar.name)
+        admincanlistphoto.append(dummyvar.picture)
+        admincanlisttype.append(admincandidates[j].candidate_type)
+        admincandiparty.append(admincandidates[j].party_name)
+        admincanlistnid.append(admincandidates[j].nid)
+        admincanlistward.append(admincandidates[j].voting_ward)
+        admincanlistarea.append(admincandidates[j].voting_area)
+        admincounter.append(Vote.objects.filter(elec_name=elecName,candidate=admincandidates[j]).count())
     
     for i in range(len(candidates)):
         dummyvar=DummyCitizenInfo.objects.get(nid = candidates[i].nid)
@@ -57,6 +67,8 @@ def election(request, elecName):
         'getElectionData': CanInfo.objects.filter(elec_name = elecName),
         'electionTable' : Election.objects.get(elec_name = elecName),
         'elec_name' : elecName,
+        'admincanlistcity' : zip(admincanlistname,admincanlisttype,admincanlistward,admincounter),
+        'admincanlistnational' : zip(admincanlistname,admincandiparty,admincanlistarea,admincounter),
         'canlist' :  zip(canlistname,canlistphoto,canlisttype,candiparty,canlistnid),
         'canlist1' :  zip(canlistname,canlistphoto,canlisttype,candiparty,canlistnid),
         'canlist2' :  zip(canlistname,canlistphoto,canlisttype,candiparty,canlistnid),
@@ -84,7 +96,7 @@ def election(request, elecName):
             vModel2.save()
             vModel3.save()
         if request.POST.get('MP'):
-            vModel1 = Vote(elec_name=elecName, vote_status= True, user=DummyCitizenInfo.objects.get(email=request.user.email), candidate = CanInfo.objects.filter(candidate_type='MP').get(nid=request.POST.get('MP')))
+            vModel1 = Vote(elec_name=elecName, vote_status= True, user=DummyCitizenInfo.objects.get(email=request.user.email), candidate = CanInfo.objects.filter(candidate_type='MP',elec_name=elecName).get(nid=request.POST.get('MP')))
             vModel1.save()
             
         checkAccess = DummyCitizenInfo.objects.get(email=request.user.email)
@@ -113,10 +125,11 @@ def electionWorker(request):
                 for i in range(len(df)):
                     can = CanInfo(
                         name= df['name'][i],
+                        nid = df['nid'][i],
                         elec_name=request.POST.get('elec_name'),
-                        candidate_type=df['candidatetype'][i],
-                        party_name = df['partyname'][i],
-                        voting_area = df['area'][i],
+                        candidate_type=df['candidate_type'][i],
+                        party_name = df['party_name'][i],
+                        voting_area = df['Area Name'][i],
                     )
                     can.save()
                 elect = Election(
@@ -129,9 +142,10 @@ def electionWorker(request):
                 for i in range(len(df)):
                     can = CanInfo(
                         name= df['name'][i],
+                        nid = df['nid'][i],
                         elec_name=request.POST.get('elec_name'),
-                        candidate_type=df['candidatetype'][i],
-                        voting_ward = df['ward'][i],
+                        candidate_type=df['candidate_type'][i],
+                        voting_ward = df['Ward Number'][i],
                     )
                     can.save()
                 elect = Election(
