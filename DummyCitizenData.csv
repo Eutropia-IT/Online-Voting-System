@@ -1,31 +1,31 @@
-NID,Name,Email,Phone Number,AreaCode,Ward,Image,father name,mother name,dob,gender
-18201001,Mirza Md. Shakil,18201001@uap-bd.edu,01855754871,COMI-11,1,,Habib,Habiba,1998-01-01,
-18201003,Atm Rahat Uddin Nagari,18201003@uap-bd.edu,01971429831,RAJS-51,2,,Labib,Labiba,1998-01-02,
-18201004,Fariha Tanjim,18201004@uap-bd.edu,01731467921,DHAK-18,3,,Mojid,Mojida,1998-01-03,
-18201006,Aysha Akter Nezla,18201006@uap-bd.edu,01521205843,COMI-11,4,,Nez,Neza,1998-01-14,
-18201007,Sakal Sarkar,18201007@uap-bd.edu,01786533161,SATK-40,5,,Nityo,Nitya,1998-01-22,
-18201008,Al Amin,18201008@uap-bd.edu,01515620108,DHAK-18,6,,Nurul,Nurula,1998-01-13,
-18201009,Anamika Sultana,18201009@uap-bd.edu,01749640883,NARA-26,7,,Anam,Anama,1998-01-16,
-18201011,Protiva Arafin,18201011@uap-bd.edu,01762006810,DHAK-18,8,,Yeas,Yeasa,1998-01-12,
-18201012,Khan Mohammad Yeasin Saffat,18201012@uap-bd.edu,01521584075,DHAK-18,9,,Protiv,Protivi,1998-02-19,
-18201013,Md. Masnun,18201013@uap-bd.edu,01715258834,DHAK-18,10,,Mas,Masuda,1998-01-12,
-18201015,Nowshin Islam Nova,18201015@uap-bd.edu,01622121849,DHAK-18,11,,Nobel,Novi,1998-01-09,
-18201018,Mir Arnab Kabir,18201018@uap-bd.edu,01725493274,RAJB-28,12,,Mir,Mira,1998-01-05,
-18201021,Maliha Zaman,18201021@uap-bd.edu,01675657911,DHAK-18,13,,Zaman,Zamila,1998-01-10,
-18201022,Tahmid Anam,18201022@uap-bd.edu,01558971336,DHAK-18,14,,Anwar,Anwara,1998-01-21,
-18201023,Mst. Afia Sultana,18201023@uap-bd.edu,01743009161,GAIB-54,15,,Afjal,afjalini,1998-01-12,
-18201024,Nabiha Tahsin,18201024@uap-bd.edu,01848045850,DHAK-18,16,,Nabel,Nabela,1997-12-18,
-18201025,Humayra Tabassum,18201025@uap-bd.edu,01623793292,CHAT-10,17,,Taleb,Taleba,1997-11-12,
-18201027,Moshiur Rahman Tonmoy,18201027@uap-bd.edu,01951460727,BRAH-8,18,,Mohsin,Mohsina,1998-01-06,
-18201030,Kaniz Fatima,18201030@uap-bd.edu,01715604301,DHAK-18,19,,Fatem,Fatema,1998-01-31,
-18201031,Rubaiya Benta Mahfuj,18201031@uap-bd.edu,01877698675,GAIB-54,20,,Abdul,Alima,1998-01-25,
-18201033,Afia Tasnim,18201033@uap-bd.edu,01552349908,DHAK-18,21,,Abul,Hasena,1998-01-03,
-18201034,Md. Mahirbin Foysal,18201034@uap-bd.edu,01701061127,RANG-59,22,,Deb,Debi,1998-01-04,
-18201037,Jannatul Tashrufa,18201037@uap-bd.edu,01627912523,RAJS-51,23,,Ketab,Kakoli,1998-01-07,
-18201040,Sourav Kumar Dey,18201040@uap-bd.edu,01739501809,DHAK-18,24,,Sadek,Sadeka,1998-01-20,
-18201041,Md. Fahim Rahman,18201041@uap-bd.edu,01521219173,DHAK-18,25,,Shamin,Shamima,1998-01-12,
-18201042,Mehedi Hasan,18201042@uap-bd.edu,01830383371,TANG-30,26,,Helal,Helaly,1998-01-03,
-18201043,Shawon Barman,18201043@uap-bd.edu,01942624058,DHAK-18,27,,Moin,Minu,1998-01-18,
-18201044,Jasmin Akter,18201044@uap-bd.edu,01932645700,DHAK-18,28,,Ameer,Ameera,1998-01-06,
-18201045,Tofail Ahmmed Emon,18201045@uap-bd.edu,01730942316,BRAH-8,29,,Ishak,Oishika,1998-01-25,
-18201060,Azra Tuni,18201060@uap-bd.edu,01789986255,SYLH-64,90,,Nazrul,Nazima,1998-01-03,
+id,picture,Name,Father Name,Mother Name,nid,gender,Email,Phone Number,Area Name,Ward Number,dob,elec_Worker
+1,default.jpg,Mirza Md. Shakil,Habib,Habiba,18201001,,18201001@uap-bd.edu,1855754871,COMI-11,W-1,1998-01-01,0
+2,default.jpg,Atm Rahat Uddin Nagari,Labib,Labiba,18201003,,18201003@uap-bd.edu,1971429831,RAJS-51,W-2,1998-01-02,0
+3,default.jpg,Fariha Tanjim,Mojid,Mojida,18201004,,18201004@uap-bd.edu,1731467921,DHAK-18,W-3,1998-01-03,0
+4,default.jpg,Aysha Akter Nezla,Nez,Neza,18201006,,18201006@uap-bd.edu,1521205843,COMI-11,W-4,1998-01-14,0
+5,profile_pictures/169699246_2965939403635917_6224578285621674600_n_0GihIoE.jpg,Sakal Sarkar 07,Nityananda Sarkar,Mrs. Sarkar,18201007,,18201007@uap-bd.edu,1786533161,SATK-40,W-8,1997-01-01,1
+6,default.jpg,Al Amin,Nurul,Nurula,18201008,,18201008@uap-bd.edu,1515620108,DHAK-18,W-6,1998-01-13,0
+7,default.jpg,Anamika Sultana,Anam,Anama,18201009,,18201009@uap-bd.edu,1749640883,NARA-26,W-7,1998-01-16,0
+8,default.jpg,Protiva Arafin,Yeas,Yeasa,18201011,,18201011@uap-bd.edu,1762006810,DHAK-18,W-8,1998-01-12,0
+9,default.jpg,Khan Mohammad Yeasin Saffat,Protiv,Protivi,18201012,,18201012@uap-bd.edu,1521584075,DHAK-18,W-9,1998-02-19,0
+10,default.jpg,Md. Masnun,Mas,Masuda,18201013,,18201013@uap-bd.edu,1715258834,DHAK-18,W-10,1998-01-12,0
+11,default.jpg,Nowshin Islam Nova,Nobel,Novi,18201015,,18201015@uap-bd.edu,1622121849,DHAK-18,W-11,1998-01-09,0
+12,default.jpg,Mir Arnab Kabir,Mir,Mira,18201018,,18201018@uap-bd.edu,1725493274,RAJB-28,W-12,1998-01-05,0
+13,default.jpg,Maliha Zaman,Zaman,Zamila,18201021,,18201021@uap-bd.edu,1675657911,DHAK-18,W-13,1998-01-10,0
+14,default.jpg,Tahmid Anam,Anwar,Anwara,18201022,,18201022@uap-bd.edu,1558971336,DHAK-18,W-14,1998-01-21,0
+15,default.jpg,Mst. Afia Sultana,Afjal,afjalini,18201023,,18201023@uap-bd.edu,1743009161,GAIB-54,W-15,1998-01-12,0
+16,default.jpg,Nabiha Tahsin,Nabel,Nabela,18201024,,18201024@uap-bd.edu,1848045850,DHAK-18,W-16,1997-12-18,0
+17,default.jpg,Humayra Tabassum,Taleb,Taleba,18201025,,18201025@uap-bd.edu,1623793292,CHAT-10,W-17,1997-11-12,0
+18,default.jpg,Moshiur Rahman Tonmoy,Mohsin,Mohsina,18201027,,18201027@uap-bd.edu,1951460727,BRAH-8,W-18,1998-01-06,0
+19,default.jpg,Kaniz Fatima,Fatem,Fatema,18201030,,18201030@uap-bd.edu,1715604301,DHAK-18,W-19,1998-01-31,0
+20,default.jpg,Rubaiya Benta Mahfuj,Abdul,Alima,18201031,,18201031@uap-bd.edu,1877698675,GAIB-54,W-20,1998-01-25,0
+21,default.jpg,Afia Tasnim,Abul,Hasena,18201033,,18201033@uap-bd.edu,1552349908,DHAK-18,W-21,1998-01-03,0
+22,default.jpg,Md. Mahirbin Foysal,Deb,Debi,18201034,,18201034@uap-bd.edu,1701061127,RANG-59,W-22,1998-01-04,0
+23,default.jpg,Jannatul Tashrufa,Ketab,Kakoli,18201037,,18201037@uap-bd.edu,1627912523,RAJS-51,W-23,1998-01-07,0
+24,default.jpg,Sourav Kumar Dey,Sadek,Sadeka,18201040,,18201040@uap-bd.edu,1739501809,DHAK-18,W-24,1998-01-20,0
+25,default.jpg,Md. Fahim Rahman,Shamin,Shamima,18201041,,18201041@uap-bd.edu,1521219173,DHAK-18,W-25,1998-01-12,0
+26,default.jpg,Mehedi Hasan,Helal,Helaly,18201042,,18201042@uap-bd.edu,1830383371,TANG-30,W-26,1998-01-03,0
+27,default.jpg,Shawon Barman,Moin,Minu,18201043,,18201043@uap-bd.edu,1942624058,DHAK-18,W-27,1998-01-18,0
+28,default.jpg,Jasmin Akter,Ameer,Ameera,18201044,,18201044@uap-bd.edu,1932645700,DHAK-18,W-28,1998-01-06,0
+29,default.jpg,Tofail Ahmmed Emon,Ishak,Oishika,18201045,,18201045@uap-bd.edu,1730942316,BRAH-8,W-29,1998-01-25,0
+30,default.jpg,Azra Tuni,Nazrul,Nazima,18201060,,18201060@uap-bd.edu,1789986255,SYLH-64,W-90,1998-01-03,0

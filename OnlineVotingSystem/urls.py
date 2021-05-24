@@ -26,7 +26,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
 #     path('',home_views.homepage, name='home'),
-    path('dashboard/',user_views.dashboard,name='dashboard'),
+    path('',user_views.dashboard,name='dashboard'),
     path('edit-info/',user_views.edit_info,name='edit-info'),
     path('register/',user_views.register,name='register'),
     path('result/',vote_views.result,name='result'),#need to add election name to url path
@@ -35,7 +35,7 @@ urlpatterns = [
     path('arcives/',elec_views.aricves,name='arcives'),
     path('arcives/<str:elecName>',elec_views.publicResult,name='publicRUS'),
     path('vote/',vote_views.vote,name='vote'),
-    path('',auth_views.LoginView.as_view(template_name='home/home.html'),name='login'),
+    path('login/',auth_views.LoginView.as_view(redirect_authenticated_user=True, template_name='home/home.html'),name='login'),
     path('logout/',auth_views.LogoutView.as_view(template_name='home/logout.html'),name='logout'),
 
     path('password-change/',
