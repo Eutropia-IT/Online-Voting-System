@@ -14,7 +14,7 @@ from django.db.models import Q
 def election(request, elecName):
     votearea = DummyCitizenInfo.objects.get(email = request.user.email)
     electionobj = Election.objects.get(elec_name=elecName)
-    print(electionobj.elec_type)
+    
     if(electionobj.elec_type=='national'):
         candidates=CanInfo.objects.filter(elec_name = elecName, voting_area = votearea.area_name)
     else:
@@ -142,3 +142,55 @@ def electionWorker(request):
             
             return redirect('election-worker')
     return render(request, 'home/elec-worker.html', context)
+
+def aricves(request):
+    context = {
+        'eAcrives' : Election.objects.filter(elec_status= 'ended')
+    }
+    return render(request, 'home/arcives.html', context)
+
+def publicResult(request, elecName):
+    
+    electionobj = Election.objects.get(elec_name=elecName)
+    
+    
+    candidates=CanInfo.objects.filter(elec_name = elecName)
+
+
+    canlistname = []
+    canlistphoto = []
+    candiparty = []
+    canlisttype = []
+    canlistnid = []
+    counter = []
+    canlistward =[]
+    canlistarea = []
+    
+    for i in range(len(candidates)):
+        dummyvar=DummyCitizenInfo.objects.get(nid = candidates[i].nid)
+        canlistname.append(dummyvar.name)
+        canlistphoto.append(dummyvar.picture)
+        canlisttype.append(candidates[i].candidate_type)
+        candiparty.append(candidates[i].party_name)
+        canlistnid.append(candidates[i].nid)
+        canlistward.append(candidates[i].voting_ward)
+        canlistarea.append(candidates[i].voting_area)
+        counter.append(Vote.objects.filter(elec_name=elecName,candidate=candidates[i]).count())
+
+    #flag = Vote.objects.filter(elec_name=elecName, user=DummyCitizenInfo.objects.get(email=request.user.email), vote_status= True)
+    context = {
+        #'uData' : DummyCitizenInfo.objects.get(email = request.user.email),
+        'getElectionData': CanInfo.objects.filter(elec_name = elecName),
+        'electionTable' : Election.objects.get(elec_name = elecName),
+        'elec_name' : elecName,
+        'canlist' :  zip(canlistname,canlistphoto,canlisttype,candiparty,canlistnid),
+        'canlist1' :  zip(canlistname,canlistphoto,canlisttype,candiparty,canlistnid),
+        'canlist2' :  zip(canlistname,canlistphoto,canlisttype,candiparty,canlistnid),
+        'canlist3' :  zip(canlistname,canlisttype,canlistward,counter),
+        'nationalcanlist' :  zip(canlistname,candiparty,canlistarea,counter),
+        
+    }
+    if Election.objects.filter(elec_name = elecName, elec_type = 'national'):
+        context['nTable'] = True
+    
+    return render(request, 'home/arciverus.html', context)

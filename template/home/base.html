@@ -17,8 +17,12 @@
         <div id="navber" class="row">
             <div class="col-11"></div>
             <div class="col-1">
-                <img src="{% static 'images/mujib_logo.png' %}"alt="">
+                <a href="/"><img src="{% static 'images/mujib_logo.png' %}"alt=""></a>
+                
+                <div class="btn-group" role="group" aria-label="Basic example">
                 {% block dashboardLogout %}{% endblock dashboardLogout %}
+                <a class="btn btn-info" href="{% url 'arcives' %}">Archives</a>
+                </div>
             </div>
         </div>
         {% block loginform %}{% endblock loginform %}
@@ -29,6 +33,7 @@
         {% block content %}{% endblock content %}
         {% block logoutContent %}{% endblock logoutContent %}
         {% block ecn_worker_dashboard %}{% endblock ecn_worker_dashboard %}
+        {% block arcive %}{% endblock arcive %}
         <div class="row footer">
             <p>All Rights Reserved © 2000 - 2021. Bangladesh Election Commission</p>
         </div>

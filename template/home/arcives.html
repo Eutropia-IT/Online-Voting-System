@@ -1,0 +1,14 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block arcive %}
+    <div class="container m-3">
+        <ul>
+            {% for i in eAcrives %}
+                <li><a href="{{"/arcives/"}}{{i.elec_name}}">{{i.elec_name}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock arcive %}
+
+

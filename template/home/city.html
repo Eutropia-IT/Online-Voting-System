@@ -46,6 +46,7 @@
         {% if voteFlag %}
             <h1 class="text-danger"> You have already voted once. Multiple votes may lead you to jail. </h1>
             <a href="{% url 'dashboard' %}" class="link-success">Return to Dashboard</a>
+            <img class="w-50 m-auto" src="https://media.istockphoto.com/photos/sad-prisoner-in-jail-picture-id153702112" alt="Nouka">
             {% else %}
                         <form action="" method="POST">
             {% csrf_token %}
